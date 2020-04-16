@@ -1,0 +1,19 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "macinbox"
+  config.vm.box_version = "10.15.4"
+
+  config.vm.boot_timeout = 300
+
+
+   config.vm.provider "virtualbox" do |v|
+     v.linked_clone = false
+     # Display the VirtualBox GUI when booting the machine
+     v.gui = false
+  
+     # Customize the amount of memory on the VM:
+     v.memory = 4096
+     v.cpus = 2
+
+     v.name = "macos"
+   end
+  end

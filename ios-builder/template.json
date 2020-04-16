@@ -1,0 +1,36 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-vm",
+      "communicator": "ssh",
+      "headless": "false",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_timeout": "2h",
+      "shutdown_command": "sudo shutdown -h now",
+      "guest_additions_mode": "disable",
+      "output_directory": "./builds-vm",
+      "vm_name": "ios-builder",
+      "target_snapshot": "Target-Snapshot",
+      "force_delete_snapshot": "true",
+      "keep_registered": "false",
+      "skip_export": "true"
+    }
+  ],
+  "min_packer_version": "0.7.0",
+  "provisioners": [
+    {
+      "scripts": [
+        "scripts/ntp-kod.sh",
+        "scripts/homebrew.sh",
+        "scripts/brew-packages.sh",
+        "scripts/gems.sh"
+      ],
+      "environment_vars": [],
+      "type": "shell"
+    }
+  ],
+  "variables": {
+    "vagrant_box_directory": "{{env `PACKER_VAGRANT_BOX_DIR`}}"
+  }
+}
