@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "jakubknejzlik/xcode"
-  config.vm.box_version = "11.4-ios-builder"
+  config.vm.box = "ramsey/macos-catalina"
+  config.vm.box_version = "1.0.0"
 
   config.vm.boot_timeout = 500
 
@@ -21,4 +21,15 @@ Vagrant.configure("2") do |config|
      v.customize ["modifyvm", :id, "--usbohci", "off"]
      v.customize ["modifyvm", :id, "--usbxhci", "off"]
    end
+
+   config.vm.provision :shell do |shell|
+      shell.privileged = true
+      shell.inline = 'softwareupdate --list && softwareupdate --install "macOS Catalina 10.15.7 Update- " --restart'
+      # shell.reboot = true
+  end
+   config.vm.provision :shell do |shell|
+      shell.privileged = true
+      shell.inline = 'softwareupdate --list'
+      # shell.reboot = true
+  end
 end

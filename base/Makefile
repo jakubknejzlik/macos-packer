@@ -1,2 +1,2 @@
 build:
-	./build.sh
+	sudo ./build.sh

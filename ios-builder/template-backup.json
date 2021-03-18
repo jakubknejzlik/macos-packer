@@ -30,7 +30,8 @@
         "scripts/ntp-kod.sh",
         "scripts/command-line-tools.sh",
         "scripts/homebrew.sh",
-        "scripts/brew-packages.sh"
+        "scripts/brew-packages.sh",
+        "scripts/gems.sh"
       ],
       "environment_vars": [],
       "type": "shell"
